@@ -14,7 +14,7 @@ String.prototype.hash = function () {
 var crosswordPuzzles = [
   {
     title: "Harry Potter Puzzle 1/2: Humble Beginnings.",
-    progressKey: "HOME",
+    progressKey: "484f4d45",
     size: 13,
     words: [
       {
@@ -82,7 +82,7 @@ var crosswordPuzzles = [
   },
   {
     title: "Harry Potter Puzzle 2/2: Passage to a Sorcerer\u2019s Universe.",
-    progressKey: "HOGS",
+    progressKey: "484f4753",
     size: 15,
     words: [
       {
@@ -151,6 +151,7 @@ var crosswordPuzzles = [
 
 // generate hashes
 // for (cross in crosswordPuzzles) {
+//   console.log(crosswordPuzzles[cross].progressKey, crosswordPuzzles[cross].progressKey.hash());
 //     for (word in crosswordPuzzles[cross].words) {
 //         const line = crosswordPuzzles[cross].words[word];
 //         console.log(line.answer, line.answer.hash());
@@ -483,9 +484,9 @@ function submitProgressKey() {
   keyCells.forEach(function (cell) {
     enteredKey += cell.textContent.toUpperCase();
   });
-
+  
   for (var i = 0; i < crosswordPuzzles.length; i++) {
-    if (crosswordPuzzles[i].progressKey.toUpperCase() === enteredKey) {
+    if (crosswordPuzzles[i].progressKey === enteredKey.hash()) {
       loadPuzzle(i);
       document.getElementById("progress-message").textContent =
         "Puzzle loaded successfully.";
